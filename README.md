@@ -32,6 +32,6 @@ The Shortest Path Game is a simple application where the user navigates a charac
 
 ### Acknowledgements
 
-This project was inspired by the desire to explore graph algorithms and interactive applications using C++ and SFML. Special thanks to the SFML development team for providing an excellent multimedia library for C++ developers.
+This project was inspired by the desire to explore graph algorithms and interactive applications using C++ and SFML.
 
 Feel free to contribute to this project by adding new features, fixing bugs, or providing suggestions for improvement!
