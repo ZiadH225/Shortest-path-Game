@@ -17,14 +17,6 @@ The Shortest Path Game is a simple application where the user navigates a charac
   - `(s)` represents the starting point
   - `(e)` represents the ending point
 
-### Installation and Usage
-
-1. Clone the repository to your local machine.
-2. Ensure you have SFML installed on your system.
-3. Compile the source code using a C++ compiler.
-4. Run the executable to start the game.
-5. (See "Static Maze Modification" above to modify the maze.)
-
 ### Requirements
 
 - C++ compiler
