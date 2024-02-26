@@ -10,12 +10,12 @@ The Shortest Path Game is a simple application where the user navigates a charac
 
 - **BFS Algorithm**: The application utilizes the Breadth-First Search algorithm to find the shortest path from the starting point to the goal within the maze.
 - **SFML Graphics**: SFML library is used to provide interactive graphics, enhancing the user experience.
-- **Customizable Mazes**: Users can create and customize their own maze layouts by modifying the maze matrix file.
-- **Static Maze Modification**: To modify the maze, you must edit the matrix located at `Materials/Maze.txt`. Each character in the matrix represents a specific element:
-  - `(w)` represents a wall
-  - `(g)` represents grass
-  - `(s)` represents the starting point
-  - `(e)` represents the ending point
+- **Dynamic Maze Modification**: Users can modify the maze interactively using the mouse and keyboard. 
+  - **Player Position**: Left-click (mouse) + S to change the player position.
+  - **End Point**: Left-click (mouse) + E to set the end point.
+  - **Wall Creation**: Right-click (mouse) to add a wall cell.
+  - **Wall Removal**: Right-click (mouse) on a wall to remove a wall cell.
+  - **Run the Game**: Press R to run the game after modifying the maze.
 
 ### Requirements
 
