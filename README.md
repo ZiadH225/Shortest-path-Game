@@ -1,14 +1,14 @@
 ## Shortest Path Game using BFS Algorithm with SFML Library (C++)
 
-This project implements a Shortest Path Game using the Breadth-First Search (BFS) algorithm in C++, utilizing the SFML (Simple and Fast Multimedia Library) for graphics and user interaction.
+This project implements a Shortest Path Game using the Breadth-First Search (BFS) algorithm in C++ using SFML library.
 
 ### Description
 
-The Shortest Path Game is a simple application where the user navigates a character through a maze to reach a goal while finding the shortest path. The application visualizes the maze and the character movement using SFML graphics.
+The Shortest Path Game is a simple application on the BFS algorithm. The application visualizes the maze and the character movement using SFML graphics.
 
 ### Need-To-Know
 
-- **Dynamic Maze Modification**: Follow these instructions to be able to modify your maze. 
+- **Maze Modification**: Follow these instructions to be able to modify your maze. 
   - **Player Position**: Left-click (mouse) + S to change the player position.
   - **End Point**: Left-click (mouse) + E to set the end point.
   - **Wall Creation**: Right-click (mouse) to add a wall cell.
