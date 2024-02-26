@@ -9,10 +9,10 @@ The Shortest Path Game is a simple application on the BFS algorithm. The applica
 ### Need-To-Know
 
 - **Maze Modification**: Follow these instructions to be able to modify your maze. 
-  - **Player Position**: Left-click (mouse) + S to change the player position.
-  - **End Point**: Left-click (mouse) + E to set the end point.
-  - **Wall Creation**: Right-click (mouse) to add a wall cell.
-  - **Wall Removal**: Right-click (mouse) on a wall to remove a wall cell.
+  - **Player Position**: Left-mouse-click + S to change the player position.
+  - **End Point**: Left-mouse-click + E to set the end point.
+  - **Wall Creation**: Right-mouse-click to add a wall.
+  - **Wall Removal**: Right-mouse-click on a wall to remove a wall cell.
   - **Run the Game**: Press R to run the game after modifying the maze.
 
 ### Requirements
