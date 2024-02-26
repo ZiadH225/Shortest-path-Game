@@ -10,119 +10,75 @@ using namespace std;
 
 Maze::Maze() {
     window = nullptr;
-    window = new sf::RenderWindow(sf::VideoMode(windowsize*10, windowsize*10), "Shortest Path Maze");
+    window = new sf::RenderWindow(sf::VideoMode(windowsize * 10, windowsize * 10), "Shortest Path Maze");
     window->setFramerateLimit(60);
-    adj_matrix = vector<vector<bool>>(rows, vector<bool>(cols));
-    initChars(arr);
-    initTexture(maze, playerx, playery, grass, wall, gate);
-    initPath(pathh);
-    initMatrix(arr);
-    initPlayer(playerx, playery);
-
-    if (!bfs(adj_matrix, start, target)) {
-        sf::Font font;
-        if (!font.loadFromFile("Materials/ARIAL.TTF")) {
-            cout << "Font file not found!" << endl;
-            exit(1);
-        }
-
-        sf::Text text;
-        text.setFont(font);
-        text.setString("No path found.");
-        text.setCharacterSize(60);
-        text.setFillColor(sf::Color::Red);
-        text.setPosition(window->getSize().x / 2 - text.getGlobalBounds().width / 2, window->getSize().y / 2 - text.getGlobalBounds().height / 2);
-
-        renderTexure(maze, player);
-
-        window->draw(text);
-
-        window->display();
-
-        sf::sleep(sf::seconds(5));
-
-        window->close();
-        return;
-    }
-    setPath();
-    movePlayer();
-}
-
-
-void Maze::initChars(char arr[][cols]){
-std::ifstream sin;
-    sin.open("materials/Maze.txt");
-
-    for (int i =0; i<rows; i++) {
-        for (int j=0; j<cols; j++) {
-
-            sin >> arr[i][j];
-}}}
-void Maze::initGrass(sf::Texture& grss){
-if(!grss.loadFromFile("Materials/Grass.png")){
-    cout<<"error no grass texture found";
-}
-}
-void Maze::initWall(sf::Texture& wll){
-if(!wll.loadFromFile("Materials/Wall.png")){
-    cout<<"error no wall texture found";
-}
-}
-void Maze::initGate(sf::Texture& gate){
-if(!gate.loadFromFile("Materials/Gate.png")){
-    cout<<"error no gate texture found";
-}
-}
-void Maze::initMatrix(char arr[rows][cols]) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            if (arr[i][j] == 'w') {
-                adj_matrix[i][j] = false;
-            }
-            else if (arr[i][j] == 'g' || arr[i][j] == 's' || arr[i][j] == 'e') {
-                adj_matrix[i][j] = true;
-            }
-        }
-    }
-}
-void Maze::initTexture(sf::Sprite maze[][cols],int& playerx, int& playery,sf::Texture& grass,sf::Texture& wall,sf::Texture& gate){
     initGrass(grass);
     initWall(wall);
     initGate(gate);
-     for (int i =0; i<rows; i++) {
-        for (int j=0; j<cols; j++) {
-                if (arr[i][j] == 'w'){
-                maze[i][j].setTexture(wall);
-                maze[i][j].setPosition(j*(window->getSize().x/10), i*(window->getSize().y/10));
-            }
-            else if(arr[i][j] == 'e'){
-                target.first=i;
-                target.second=j;
-            }
+    initPath(pathh);
+    initTexture(maze, grass, wall, gate);
+    initMatrix();
+    initPlayer(start.first, start.second);
+}
 
-            else{
-                if (arr[i][j] == 's') {
-                start.first=i;
-                start.second=j;
-                    playerx=i;
-                    playery=j;
-                }
+void Maze::initGrass(sf::Texture& grss) {
+    if (!grss.loadFromFile("Materials/Grass.png")) {
+        std::cout << "Error: No grass texture found" << std::endl;
+    }
+}
 
-                maze[i][j].setTexture(grass);
-                maze[i][j].setPosition(j*(window->getSize().x/10),i*(window->getSize().y/10));
+void Maze::initWall(sf::Texture& wll) {
+    if (!wll.loadFromFile("Materials/Wall.png")) {
+        std::cout << "Error: No wall texture found" << std::endl;
+    }
+}
 
-            }
-}}}
-bool Maze::bfs(vector<vector<bool>>& adj_matrix, pair<int, int> start, pair<int, int> target) {
-    int rows = adj_matrix.size();
-    int cols = adj_matrix[0].size();
+void Maze::initGate(sf::Texture& gat) {
+    if (!gat.loadFromFile("Materials/Gate.png")) {
+        std::cout << "Error: No gate texture found" << std::endl;
+    }
+}
 
+void Maze::initPath(sf::Texture& setpath) {
+    if (!setpath.loadFromFile("Materials/path.png")) {
+        std::cout << "Error: No path texture found" << std::endl;
+    }
+}
+
+void Maze::initTexture(sf::Sprite maze[][cols], sf::Texture& grass, sf::Texture& wall, sf::Texture& gate) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            maze[i][j].setTexture(grass);
+            maze[i][j].setPosition(j * (window->getSize().x / 10), i * (window->getSize().y / 10));
+        }
+    }
+}
+
+void Maze::initPlayer(int x, int y) {
+    playeri = x;
+    playerj = y;
+    playertex.loadFromFile("Materials/player.png");
+
+    player.setTexture(playertex);
+    player.setPosition(playerj * (window->getSize().x / 10 + 3), playeri * (window->getSize().y / 10) + 7);
+}
+
+void Maze::initMatrix() {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            arr[i][j] = ' ';
+            adj_matrix.push_back(std::vector<bool>(cols, true));
+        }
+    }
+}
+
+bool Maze::bfs(std::pair<int, int> start, std::pair<int, int> target) {
     int startNode = start.first * cols + start.second;
     int targetNode = target.first * cols + target.second;
 
-    queue<int> q;
-    vector<bool> visited(rows * cols, false);
-    vector<int> parent(rows * cols, -1);
+    std::queue<int> q;
+    std::vector<bool> visited(rows * cols, false);
+    std::vector<int> parent(rows * cols, -1);
     visited[startNode] = true;
     q.push(startNode);
 
@@ -130,7 +86,7 @@ bool Maze::bfs(vector<vector<bool>>& adj_matrix, pair<int, int> start, pair<int,
         int curr = q.front();
         q.pop();
         if (curr == targetNode) {
-            int node =targetNode;
+            int node = targetNode;
             while (node != startNode) {
                 int row = node / cols;
                 int col = node % cols;
@@ -138,20 +94,14 @@ bool Maze::bfs(vector<vector<bool>>& adj_matrix, pair<int, int> start, pair<int,
                 node = parent[node];
             }
             path.push_back(start);
-            reverse(path.begin(), path.end());
-
-            cout << "Shortest Path: ";
-            for (const auto& p : path) {
-                cout << "(" << p.first << ", " << p.second << ") ";
-            }
-            cout << endl;
+            std::reverse(path.begin(), path.end());
             return true;
         }
         int currRow = curr / cols;
         int currCol = curr % cols;
         int dx[] = { -1, 1, 0, 0 };
         int dy[] = { 0, 0, -1, 1 };
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; ++i) {
             int newRow = currRow + dx[i];
             int newCol = currCol + dy[i];
             if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols &&
@@ -166,38 +116,7 @@ bool Maze::bfs(vector<vector<bool>>& adj_matrix, pair<int, int> start, pair<int,
 
     return false;
 }
-void Maze::initPlayer(int x,int y){
-        playeri=x;
-        playerj=y;
-        playertex.loadFromFile("Materials/player.png");
 
-        player.setTexture(playertex);
-        player.setPosition(playerj*(window->getSize().x/10+3), playeri*(window->getSize().y/10)+7);
-
-}
-void Maze::renderTexure(sf::Sprite maze[][cols], sf::Sprite player) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            window->draw(maze[i][j]);
-        }
-    }
-    window->draw(player);
-}
-const bool Maze::isRunning() const {
-    return window->isOpen();
-}
-void Maze::pollEvents() {
-    while (window->pollEvent(ev)) {
-        switch (ev.type) {
-        case sf::Event::Closed:
-            window->close();
-            break;
-        case sf::Event::KeyPressed:
-            if (ev.key.code == sf::Keyboard::Escape) window->close();
-            break;
-        }
-    }
-}
 void Maze::movePlayer() {
     for (const auto& p : path) {
         playeri = p.first;
@@ -205,29 +124,145 @@ void Maze::movePlayer() {
         player.setPosition(playerj * (window->getSize().x / 10 + 1), playeri * (window->getSize().y / 10) + 7);
         render();
         pollEvents();
-        sleep(sf::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
+}
 
-}
-void Maze::initPath(sf::Texture& setpath){
-    setpath.loadFromFile("Materials/path.png");
-}
-void Maze::setPath(){
+void Maze::setPath() {
     for (const auto& p : path) {
-       maze[p.first][p.second].setTexture(pathh);
+        maze[p.first][p.second].setTexture(pathh);
     }
     maze[target.first][target.second].setTexture(gate);
-    maze[target.first][target.second].setPosition(target.second*(window->getSize().x/10), target.first*(window->getSize().y/10));
+    maze[target.first][target.second].setPosition(target.second * (window->getSize().x / 10), target.first * (window->getSize().y / 10));
 }
+void Maze::handleKeyPress(sf::Keyboard::Key key) {
+    if (key == sf::Keyboard::R) {
+        runBFS();
+    }
+}
+
+void Maze::pollEvents() {
+    while (window->pollEvent(ev)) {
+        switch (ev.type) {
+            case sf::Event::Closed:
+                window->close();
+                break;
+            case sf::Event::KeyPressed:
+                handleKeyPress(ev.key.code);
+                if (ev.key.code == sf::Keyboard::Escape) window->close();
+                break;
+            case sf::Event::MouseButtonPressed:
+                handleMouseClick(ev.mouseButton.button, sf::Mouse::getPosition(*window));
+                break;
+        }
+    }
+}
+
+void Maze::handleMouseClick(sf::Mouse::Button button, sf::Vector2i mousePosition) {
+    int col = mousePosition.x / (window->getSize().x / cols);
+    int row = mousePosition.y / (window->getSize().y / rows);
+
+    if (row >= 0 && row < rows && col >= 0 && col < cols) {
+        if (button == sf::Mouse::Right) {
+            if (arr[row][col] == 'w') {
+                arr[row][col] = ' ';
+                adj_matrix[row][col] = true;
+                maze[row][col].setTexture(grass);
+            } else {
+                arr[row][col] = 'w';
+                adj_matrix[row][col] = false;
+                maze[row][col].setTexture(wall);
+            }
+            isPathSet = false;
+        }
+        else if (button == sf::Mouse::Left) {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                if (arr[row][col] != 'w') {
+                    start = { row, col };
+                    arr[row][col] = 's';
+                    initPlayer(row, col);
+                    isPathSet = false;
+                }
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+                bool endPointAlreadySet = false;
+                for (int i = 0; i < rows; ++i) {
+                    for (int j = 0; j < cols; ++j) {
+                        if (arr[i][j] == 'e') {
+                            endPointAlreadySet = true;
+                            break;
+                        }
+                    }
+                    if (endPointAlreadySet) break;
+                }
+                if (!endPointAlreadySet && arr[row][col] != 'w') {
+                    target = { row, col };
+                    arr[row][col] = 'e';
+                    maze[row][col].setTexture(gate);
+                    maze[row][col].setPosition(col * (window->getSize().x / cols), row * (window->getSize().y / rows));
+                    isPathSet = false;
+                }
+            }
+        }
+    }
+}
+
+void Maze::runBFS() {
+    if (!isPathSet) {
+        if (!bfs(start, target)) {
+            sf::Font font;
+        if (!font.loadFromFile("Materials/ARIAL.TTF")) {
+            cout << "Font file not found!" << endl;
+            exit(1);
+        }
+
+        sf::Text text;
+        text.setFont(font);
+        text.setString("No path found.");
+        text.setCharacterSize(60);
+        text.setFillColor(sf::Color::Red);
+        text.setPosition(window->getSize().x / 2 - text.getGlobalBounds().width / 2, window->getSize().y / 2 - text.getGlobalBounds().height / 2);
+
+        renderTexture(maze, player);
+
+        window->draw(text);
+
+        window->display();
+
+        sf::sleep(sf::seconds(5));
+
+        window->close();
+        return;
+        }
+        setPath();
+        isPathSet = true;
+        movePlayer();
+    }
+}
+
+const bool Maze::isRunning() const {
+    return window->isOpen();
+}
+
 void Maze::update() {
     pollEvents();
 }
+
 void Maze::render() {
     window->clear();
-    renderTexure(maze,player);
+    renderTexture(maze, player);
     window->display();
 }
-Maze::~Maze()
-{
+
+void Maze::renderTexture(sf::Sprite maze[][cols], sf::Sprite player) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            window->draw(maze[i][j]);
+        }
+    }
+    window->draw(player);
+}
+
+Maze::~Maze() {
     delete window;
 }
