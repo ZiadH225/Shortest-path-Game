@@ -8,7 +8,7 @@
 #include <SFML/System.hpp>
 using namespace std;
 
-Maze::Maze() {
+Maze::Maze() : player(start.first, start.second) {
     window = nullptr;
     window = new sf::RenderWindow(sf::VideoMode(windowsize * 10, windowsize * 10), "Shortest Path Maze");
     window->setFramerateLimit(60);
@@ -16,7 +16,7 @@ Maze::Maze() {
     initWall(wall);
     initGate(gate);
     initPath(pathh);
-    initTexture(maze, grass, wall, gate);
+    initTexture(grass, wall, gate);
     initMatrix();
     initPlayer(start.first, start.second);
 }
@@ -45,7 +45,7 @@ void Maze::initPath(sf::Texture& setpath) {
     }
 }
 
-void Maze::initTexture(sf::Sprite maze[][cols], sf::Texture& grass, sf::Texture& wall, sf::Texture& gate) {
+void Maze::initTexture(sf::Texture& grass, sf::Texture& wall, sf::Texture& gate) {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             maze[i][j].setTexture(grass);
@@ -55,12 +55,7 @@ void Maze::initTexture(sf::Sprite maze[][cols], sf::Texture& grass, sf::Texture&
 }
 
 void Maze::initPlayer(int x, int y) {
-    playeri = x;
-    playerj = y;
-    playertex.loadFromFile("Materials/player.png");
-
-    player.setTexture(playertex);
-    player.setPosition(playerj * (window->getSize().x / 10 + 3), playeri * (window->getSize().y / 10) + 7);
+    player.setPosition(y * (window->getSize().x / 10 + 3), x * (window->getSize().y / 10) + 7);
 }
 
 void Maze::initMatrix() {
@@ -119,14 +114,15 @@ bool Maze::bfs(std::pair<int, int> start, std::pair<int, int> target) {
 
 void Maze::movePlayer() {
     for (const auto& p : path) {
-        playeri = p.first;
-        playerj = p.second;
+        int playeri = p.first;
+        int playerj = p.second;
         player.setPosition(playerj * (window->getSize().x / 10 + 1), playeri * (window->getSize().y / 10) + 7);
         render();
         pollEvents();
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 }
+
 
 void Maze::setPath() {
     for (const auto& p : path) {
@@ -223,13 +219,13 @@ void Maze::runBFS() {
         text.setFillColor(sf::Color::Red);
         text.setPosition(window->getSize().x / 2 - text.getGlobalBounds().width / 2, window->getSize().y / 2 - text.getGlobalBounds().height / 2);
 
-        renderTexture(maze, player);
+        renderTexture();
 
         window->draw(text);
 
         window->display();
 
-        sf::sleep(sf::seconds(5));
+        sf::sleep(sf::seconds(2));
 
         window->close();
         return;
@@ -250,17 +246,17 @@ void Maze::update() {
 
 void Maze::render() {
     window->clear();
-    renderTexture(maze, player);
+    renderTexture();
     window->display();
 }
 
-void Maze::renderTexture(sf::Sprite maze[][cols], sf::Sprite player) {
+void Maze::renderTexture() {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             window->draw(maze[i][j]);
         }
     }
-    window->draw(player);
+    window->draw(player.getSprite());
 }
 
 Maze::~Maze() {

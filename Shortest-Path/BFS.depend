@@ -535,7 +535,7 @@
 	<thread>
 	<SFML/System.hpp>
 
-1708606609 source:c:\users\hesha\documents\projects\shortest-path\main.cpp
+1708987536 source:c:\users\hesha\documents\projects\shortest-path\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	<SFML/Window.hpp>
@@ -543,12 +543,13 @@
 	<vector>
 	<Maze.h>
 
-1708955496 c:\users\hesha\documents\projects\shortest-path\include\maze.h
+1708993602 c:\users\hesha\documents\projects\shortest-path\include\maze.h
+	"Player.h"
 	<SFML/Graphics.hpp>
 	<vector>
 	<iostream>
 
-1708955719 source:c:\users\hesha\documents\projects\shortest-path\src\maze.cpp
+1708995043 source:c:\users\hesha\documents\projects\shortest-path\src\maze.cpp
 	"Maze.h"
 	<iostream>
 	<fstream>
@@ -557,4 +558,11 @@
 	<chrono>
 	<thread>
 	<SFML/System.hpp>
+
+1708995060 c:\users\hesha\documents\projects\shortest-path\include\player.h
+	<SFML/Graphics.hpp>
+
+1708995107 source:c:\users\hesha\documents\projects\shortest-path\src\player.cpp
+	"Player.h"
+	<iostream>
 

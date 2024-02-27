@@ -49,8 +49,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Maze.h" />
+		<Unit filename="include/Player.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Maze.cpp" />
+		<Unit filename="src/Player.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -1,5 +1,6 @@
 #ifndef MAZE_H
 #define MAZE_H
+#include "Player.h"
 #include <SFML/Graphics.hpp>
 #include<vector>
 #include<iostream>
@@ -11,14 +12,10 @@ class Maze {
 private:
     sf::RenderWindow* window;
     sf::Event ev;
-    sf::Texture playertex;
     sf::Texture grass;
     sf::Texture wall;
-    sf::Texture pathh;
     sf::Texture gate;
-    int playerx, playery;
-    int playeri, playerj;
-    sf::Sprite player;
+    sf::Texture pathh;
     sf::Sprite maze[rows][cols];
     char arr[rows][cols];
     std::vector<std::vector<bool>> adj_matrix;
@@ -26,14 +23,15 @@ private:
     std::pair<int, int> target;
     std::vector<std::pair<int, int>> path;
     bool isPathSet = false;
+    Player player;
 
     void initGrass(sf::Texture& grss);
     void initWall(sf::Texture& wll);
     void initGate(sf::Texture& gate);
     void initPath(sf::Texture& setpath);
-    void initTexture(sf::Sprite maze[][cols], sf::Texture& grass, sf::Texture& wall, sf::Texture& gate);
+    void initTexture(sf::Texture& grass, sf::Texture& wall, sf::Texture& gate);
     void initPlayer(int x, int y);
-    void renderTexture(sf::Sprite maze[][cols], sf::Sprite player);
+    void renderTexture();
     void initMatrix();
     bool bfs(std::pair<int, int> start, std::pair<int, int> target);
     void movePlayer();
