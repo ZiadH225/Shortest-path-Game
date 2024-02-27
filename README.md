@@ -1,29 +1,24 @@
 ## Shortest Path Game using BFS Algorithm with SFML Library (C++)
 
-This project implements a Shortest Path Game using the Breadth-First Search (BFS) algorithm in C++, utilizing the SFML (Simple and Fast Multimedia Library) for graphics and user interaction.
+This project implements a Shortest Path Game using the Breadth-First Search (BFS) algorithm in C++ using SFML library.
 
 ### Description
 
-The Shortest Path Game is a simple application where the user navigates a character through a maze to reach a goal while finding the shortest path. The application visualizes the maze and the character movement using SFML graphics.
+The Shortest Path Game is a simple application on the BFS algorithm. The application visualizes the maze and the character movement using SFML graphics.
 
-### Features
+### Need-To-Know
 
-- **BFS Algorithm**: The application utilizes the Breadth-First Search algorithm to find the shortest path from the starting point to the goal within the maze.
-- **SFML Graphics**: SFML library is used to provide interactive graphics, enhancing the user experience.
-- **Customizable Mazes**: Users can create and customize their own maze layouts by modifying the maze matrix file.
-- **Static Maze Modification**: To modify the maze, you must edit the matrix located at `Materials/Maze.txt`. Each character in the matrix represents a specific element:
-  - `(w)` represents a wall
-  - `(g)` represents grass
-  - `(s)` represents the starting point
-  - `(e)` represents the ending point
+- **Maze Modification**: Follow these instructions to be able to modify your maze. 
+  - **Player Position**: Left-mouse-click + S to change the player position.
+  - **End Point**: Left-mouse-click + E to set the end point.
+  - **Wall Creation**: Right-mouse-click to add a wall.
+  - **Wall Removal**: Right-mouse-click on a wall to remove a wall cell.
+  - **Run the Game**: Press R to run the game after modifying the maze.
 
 ### Requirements
-
 - C++ compiler
 - SFML library
 
 ### Acknowledgements
-
-This project was inspired by the desire to explore graph algorithms and interactive applications using C++ and SFML.
 
 Feel free to contribute to this project by adding new features, fixing bugs, or providing suggestions for improvement!
