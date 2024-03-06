@@ -29,7 +29,7 @@ private:
     void initWall(sf::Texture& wll);
     void initGate(sf::Texture& gate);
     void initPath(sf::Texture& setpath);
-    void initTexture(sf::Texture& grass, sf::Texture& wall, sf::Texture& gate);
+    void initTexture(sf::Texture& grass);
     void initPlayer(int x, int y);
     void renderTexture();
     void initMatrix();

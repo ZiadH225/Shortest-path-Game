@@ -16,7 +16,7 @@ Maze::Maze() : player(start.first, start.second) {
     initWall(wall);
     initGate(gate);
     initPath(pathh);
-    initTexture(grass, wall, gate);
+    initTexture(grass);
     initMatrix();
     initPlayer(start.first, start.second);
 }
@@ -45,7 +45,7 @@ void Maze::initPath(sf::Texture& setpath) {
     }
 }
 
-void Maze::initTexture(sf::Texture& grass, sf::Texture& wall, sf::Texture& gate) {
+void Maze::initTexture(sf::Texture& grass) {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             maze[i][j].setTexture(grass);
@@ -62,8 +62,8 @@ void Maze::initMatrix() {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             arr[i][j] = ' ';
-            adj_matrix.push_back(std::vector<bool>(cols, true));
         }
+        adj_matrix.push_back(std::vector<bool>(cols, true));
     }
 }
 
@@ -134,6 +134,16 @@ void Maze::setPath() {
 void Maze::handleKeyPress(sf::Keyboard::Key key) {
     if (key == sf::Keyboard::R) {
         runBFS();
+    }
+    else if (key == sf::Keyboard::C) {
+        arr[0][0] = 's';
+        start = { 0,0 };
+        target = { 0,0 };
+        adj_matrix.clear();
+        path.clear();
+        initMatrix();
+        initTexture(grass);
+        initPlayer(start.first, start.second);
     }
 }
 
@@ -216,8 +226,11 @@ void Maze::runBFS() {
             sf::Text text;
             text.setFont(font);
             text.setString("No path found.");
+            text.setFillColor(sf::Color::White);
+            text.setStyle(sf::Text::Bold);
+            text.setOutlineColor(sf::Color::Black);
+            text.setOutlineThickness(5);
             text.setCharacterSize(60);
-            text.setFillColor(sf::Color::Red);
             text.setPosition(window->getSize().x / 2 - text.getGlobalBounds().width / 2, window->getSize().y / 2 - text.getGlobalBounds().height / 2);
 
             renderTexture();

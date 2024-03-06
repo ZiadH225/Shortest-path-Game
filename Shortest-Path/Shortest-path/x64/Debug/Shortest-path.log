@@ -9,29 +9,24 @@ C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(52,38): war
 C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(52,38): warning C4244:         [
 C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(52,38): warning C4244:             T=unsigned int
 C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(52,38): warning C4244:         ]
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,108): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,108): warning C4244:         with
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,108): warning C4244:         [
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,108): warning C4244:             T=unsigned int
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,108): warning C4244:         ]
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,65): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,65): warning C4244:         with
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,65): warning C4244:         [
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,65): warning C4244:             T=unsigned int
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(132,65): warning C4244:         ]
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,88): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,88): warning C4244:         with
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,88): warning C4244:         [
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,88): warning C4244:             T=unsigned int
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,88): warning C4244:         ]
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,52): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,52): warning C4244:         with
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,52): warning C4244:         [
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,52): warning C4244:             T=unsigned int
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(199,52): warning C4244:         ]
-  Player.cpp
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Player.cpp(14,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Player.cpp(14,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Shortest-path.cpp
-  Generating Code...
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,108): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,108): warning C4244:         with
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,108): warning C4244:         [
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,108): warning C4244:             T=unsigned int
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,108): warning C4244:         ]
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,65): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,65): warning C4244:         with
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,65): warning C4244:         [
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,65): warning C4244:             T=unsigned int
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(137,65): warning C4244:         ]
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,88): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,88): warning C4244:         with
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,88): warning C4244:         [
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,88): warning C4244:             T=unsigned int
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,88): warning C4244:         ]
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,52): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,52): warning C4244:         with
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,52): warning C4244:         [
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,52): warning C4244:             T=unsigned int
+C:\Users\hesha\Documents\VS C++\Shortest-path\Shortest-path\Maze.cpp(214,52): warning C4244:         ]
   Shortest-path.vcxproj -> C:\Users\hesha\Documents\VS C++\Shortest-path\x64\Debug\Shortest-path.exe

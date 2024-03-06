@@ -18,6 +18,8 @@ int main()
     cout << "Right-mouse-click on a wall to remove a wall cell." << endl;
     cout << endl;
     cout << "Press R to run the game after modifying the maze." << endl;
+    cout << endl;
+    cout << "Press C to Clear the maze." << endl;
     while (maze.isRunning())
     {
         maze.update();
