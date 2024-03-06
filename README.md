@@ -14,6 +14,7 @@ The Shortest Path Game is a simple application on the BFS algorithm. The applica
   - **Wall Creation**: Right-mouse-click to add a wall.
   - **Wall Removal**: Right-mouse-click on a wall to remove a wall cell.
   - **Run the Game**: Press R to run the game after modifying the maze.
+  - **Clear the maze**: Press C to clear the maze.
 
 ### Requirements
 - C++ compiler
